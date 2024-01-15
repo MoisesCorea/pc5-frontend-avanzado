@@ -1,0 +1,139 @@
+<div class="spinner-background loading" *ngIf="loading">
+  <mat-spinner class="spinner-position"> </mat-spinner>
+</div>
+
+<div class="container">
+  <div class="header">
+    <h2>Akatsuki characters</h2>
+    <h3>Naruto - Naruto Shippuden</h3>
+    <img src="assets/images/logo.png" alt="" />
+  </div>
+  <mat-tab-group>
+    <mat-tab label="First" class="table">
+      <ng-template mat-tab-label>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontSet="material-icons"
+          >apps</mat-icon
+        >
+      </ng-template>
+      <div class="container-cards">
+        <ng-container *ngFor="let character of response.akatsuki">
+          <mat-card
+            *ngIf="
+              character.id !== 559 &&
+              character.id !== 396 &&
+              character.id !== 141 &&
+              character.id !== 325 &&
+              character.id !== 400 &&
+              character.id !== 627 &&
+              character.id !== 735 &&
+              character.id !== 166 &&
+              character.id !== 195 &&
+              character.id !== 755 &&
+              character.id !== 778 &&
+              character.id !== 762 &&
+              character.id !== 627 &&
+              character.id !== 856 &&
+              character.id !== 850 &&
+              character.id !== 887 &&
+              character.id !== 960 &&
+              character.id !== 830 &&
+              character.id !== 1000 &&
+              character.id !== 1167 &&
+              character.id !== 1229 &&
+              character.id !== 1284 &&
+              character.id !== 1409 &&
+              character.id !== 1420
+            "
+            class="card"
+          >
+            <mat-card-header>
+              <mat-card-title>
+                <h3>
+                  {{ character.name }}
+                </h3></mat-card-title
+              >
+            </mat-card-header>
+            <a [routerLink]="['/character', character.id]">
+              <img
+                mat-card-image
+                src="{{ character.images[0] }}"
+                alt="Photo of a Shiba Inu"
+              />
+            </a>
+
+            <mat-card-content>
+              <p><b>Village: </b>{{ character.personal.affiliation[0] }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <a class="btn" [routerLink]="['/character', character.id]"
+                >More info</a
+              >
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+      </div>
+    </mat-tab>
+    <mat-tab label="Second">
+      <ng-template mat-tab-label>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontSet="material-icons"
+          >list</mat-icon
+        >
+      </ng-template>
+      <mat-grid-list
+        *ngFor="let character of response.akatsuki"
+        cols="5"
+        rowHeight="4:1"
+      >
+        <a
+          *ngIf="
+            character.id !== 559 &&
+            character.id !== 396 &&
+            character.id !== 141 &&
+            character.id !== 325 &&
+            character.id !== 400 &&
+            character.id !== 627 &&
+            character.id !== 735 &&
+            character.id !== 166 &&
+            character.id !== 195 &&
+            character.id !== 755 &&
+            character.id !== 778 &&
+            character.id !== 762 &&
+            character.id !== 627 &&
+            character.id !== 856 &&
+            character.id !== 850 &&
+            character.id !== 887 &&
+            character.id !== 960 &&
+            character.id !== 830 &&
+            character.id !== 1000 &&
+            character.id !== 1167 &&
+            character.id !== 1229 &&
+            character.id !== 1284 &&
+            character.id !== 1409 &&
+            character.id !== 1420
+          "
+          class="list"
+          [routerLink]="['/character', character.id]"
+        >
+          <mat-grid-tile
+            style="border-radius: 10px 1px 1px 10px"
+            [colspan]="1"
+            [rowspan]="1"
+            >{{ character.id }}</mat-grid-tile
+          >
+          <mat-grid-tile
+            style="border-radius: 1px 10px 10px 1px"
+            [colspan]="4"
+            [rowspan]="1"
+            >{{ character.name }}</mat-grid-tile
+          >
+        </a>
+      </mat-grid-list>
+    </mat-tab>
+  </mat-tab-group>
+</div>

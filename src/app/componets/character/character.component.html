@@ -1,0 +1,33 @@
+<div class="container-btn">
+  <a class="btn" routerLink="/">Back</a>
+</div>
+
+<div *ngIf="character" class="container">
+  <div class="container-img">
+    <img class="rounded" src="{{ character.images[0] }}" />
+  </div>
+  <div class="info">
+    <h2 style="text-align: center">{{ character.name }}</h2>
+
+    <h3>
+      <strong>Character debut in the story</strong>
+    </h3>
+
+    <p *ngIf="character.debut.manga">Manga - {{ character.debut.manga }}</p>
+    <p *ngIf="character.debut.anime">Anime - {{ character.debut.anime }}</p>
+    <p *ngIf="character.debut.novel">Novela - {{ character.debut.novel }}</p>
+
+    <button class="btn" (click)="showAllDetails = !showAllDetails">
+      {{ showAllDetails ? "Hide Details" : "Show All Details" }}
+    </button>
+    <mat-tab-group *ngIf="showAllDetails">
+      <mat-tab label="Jutsus">
+        {{ character.jutsu }}
+      </mat-tab>
+      <mat-tab label="Nature type">
+        {{ character.natureType }}
+      </mat-tab>
+      <mat-tab label="Tools">{{ character.tools }}</mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
