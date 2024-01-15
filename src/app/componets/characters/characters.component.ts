@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CharactersResponse, Character } from 'src/app/models/characters';
 import { CharactersService } from 'src/app/services/characters.service';
@@ -7,6 +14,12 @@ import { LoaderService } from 'src/app/services/loader.service';
   selector: 'app-characters',
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0, transform: 'translateY(20px)' })),
+      transition('void => *', animate('1000ms ease-in')),
+    ]),
+  ],
 })
 export class CharactersComponent implements OnInit {
   loading = false;
